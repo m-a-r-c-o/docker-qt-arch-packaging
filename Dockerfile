@@ -25,7 +25,7 @@ RUN pacman --noconfirm -Syyu \
 # Add build user and build/install discount lib
 RUN useradd -s /bin/bash -u 2000 build
 USER build
-RUN git clone https://aur.archlinux.org/discount.git /tmp/discount && cd /tmp/discount && makepkg
+RUN git clone --branch v2.2.2 https://aur.archlinux.org/discount.git /tmp/discount && cd /tmp/discount && makepkg
 USER root
 RUN pacman --noconfirm -U /tmp/discount/*.pkg.tar.xz
 
