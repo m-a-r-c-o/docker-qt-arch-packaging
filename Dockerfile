@@ -22,6 +22,11 @@ RUN pacman --noconfirm -Syyu \
 			qt5-webkit
 
 
+# Set correct timezone
+ENV TZ=Europe/Berlin
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
 # Add build user and build/install discount lib
 RUN useradd -s /bin/bash -u 2000 build
 USER build
